@@ -1,7 +1,6 @@
 import axios from 'axios';
 const KEY = 'api_key=a00dfce4382f6d105ad489a1b9020455';
 const MOVIE_URL = 'https://api.themoviedb.org/3/';
-const DEFAULT_METHOD = 'trending/all/day';
 
 export const tmdbMovieAPI = (method, page, search = '') => {
     const pageNumb = `page=${page}`;
@@ -26,7 +25,7 @@ export const tmdbMovieAPI = (method, page, search = '') => {
             const totalPagesData = responce.data.total_pages;
             return {movData, totalPagesData};
         })
-        .catch(err => console.log(err));
+        .catch(err => {return err});
 };
 
 export const tmdbMovieIdAPI = (method, id, addMethod = '') => { 
@@ -42,7 +41,7 @@ export const tmdbMovieIdAPI = (method, id, addMethod = '') => {
 
 
 export const tmdbImageAPI = (idImgFileWithExt, widthPx = 'original') => { 
-    axios.defaults.baseURL = `https://image.tmdb.org/t/p/${widthPx}/${idImgFileWithExt}`;
+    axios.defaults.baseURL = `https://image.tmdb.org/t/p/${widthPx}${idImgFileWithExt}`;
 
     return axios
         .get('')

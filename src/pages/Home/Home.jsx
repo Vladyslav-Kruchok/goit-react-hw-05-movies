@@ -1,15 +1,14 @@
-import { Box } from '../../components/Box';
 import { HomeListItem } from '../../components/HomeListItem';
 
-export const Home = ({arr}) => { 
+export const Home = ({arr, onClick}) => { 
     return (
-        <Box>
+        <main>
             <h1>Trending today</h1>
             <ul>
-                {arr.map(item => 
-                    <HomeListItem id={item.id} film={item} key={item.id} />
+                {arr && arr.map(item => 
+                    <HomeListItem id={item.id} film={item} onClick={onClick} key={item.id} />
                 )}
             </ul>
-        </Box>
+        </main>
     );
 };

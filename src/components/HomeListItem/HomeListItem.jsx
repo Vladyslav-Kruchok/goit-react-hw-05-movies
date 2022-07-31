@@ -1,7 +1,11 @@
-export const HomeListItem = ({film: {id, original_name,original_title }}) => { 
+import { Link } from 'react-router-dom';
+
+export const HomeListItem = ({ film: { id, name, title }, onClick }) => { 
 return (
+    <>
         <li>
-        <a id={id} href="#" onClick={() => { }}>{ original_name || original_title }</a>
+            <Link to={`/movies/${id}`} onClick={onClick}>{name || title}</Link>
         </li>
+    </>
     );
 };

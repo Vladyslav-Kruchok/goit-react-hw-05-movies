@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 
-export const Box = ({ children }) => { 
+export const Section = ({ children }) => { 
     return (
-        <div>
+        <section>
             {children}
-        </div>
+        </section>
     );
 };
 
-Box.protoType = {
+Section.protoType = {
     children: PropTypes.node.isRequired
 };

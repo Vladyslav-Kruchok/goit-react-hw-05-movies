@@ -1,9 +1,7 @@
-import { Box } from '../../components/Box';
 
-export const Movies = () => { 
+
+export const Movies = () => {
     return (
-        <Box>
-            <div>Movies</div>
-        </Box>
+        <main>Movies</main>
     );
 };
