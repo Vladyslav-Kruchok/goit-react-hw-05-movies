@@ -21,11 +21,8 @@ export const App = () => {
     });
     //};
     //# region COMENTED #
-    //ok
     //const searchByName = tmdbMovieAPI('search/movie', 1, 'king');
-    //const searchById = tmdbMovieIdAPI('movie', '892527', 'credits');
     //searchByName.then(value => { console.log(value.movData, value.totalPagesData) })
-    //searchById.then(value => { console.log(value); });
     //# endregion #
   }, []);
 

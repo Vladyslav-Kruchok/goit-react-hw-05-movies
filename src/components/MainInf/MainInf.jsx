@@ -1,9 +1,7 @@
 //React
 import { useState, useEffect } from 'react';
-//Component
-import { Section } from "components/Section";
 //Style
-import { Link, SectionMainInfo } from "./MainInf.styled";
+import { Link, SectionMainInfo, SectionAddInfo } from "./MainInf.styled";
 //API
 import { tmdbImageAPI } from 'api/tmdbAPI';
 
@@ -18,7 +16,7 @@ export const MainInf = ({ movieObj}) => {
         return date || 'not found';
     };
     useEffect(() => {
-        tmdbImageAPI(poster_path, `w${WIDTH_IMG}`).then(partPathImg => setImgLink(partPathImg));
+        tmdbImageAPI(poster_path, `w${WIDTH_IMG}`).then(fullPathImg => setImgLink(fullPathImg));
     }, [imgLink, poster_path]);
 
     return (
@@ -44,7 +42,7 @@ export const MainInf = ({ movieObj}) => {
                     </li>}
                 </ul>
             </SectionMainInfo>
-            <Section>
+            <SectionAddInfo>
                 <p>Additional information</p>
                 <ul>
                     <li>
@@ -54,7 +52,7 @@ export const MainInf = ({ movieObj}) => {
                         <Link to="reviews">Reviews</Link>
                     </li>
                 </ul>
-            </Section>
+            </SectionAddInfo>
         </>
     );
 };

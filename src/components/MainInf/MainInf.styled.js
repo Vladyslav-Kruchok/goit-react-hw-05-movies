@@ -13,4 +13,9 @@ export const Link = styled(NavLink)`
 `;
 export const SectionMainInfo = styled.section`
     display: flex;
+    border-top: 1px solid grey;
+`;
+export const SectionAddInfo = styled.section`
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
 `;

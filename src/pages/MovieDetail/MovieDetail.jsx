@@ -15,11 +15,8 @@ export const MovieDetail = () => {
         const movie = tmdbMovieIdAPI('movie', `${movieId}`);
         if (movie) {
             movie.then(value => {
-                if (!value)
-                {
-                    return;
-                    }
-                setMovieObj(value.data)
+                if (!value) return;
+                setMovieObj(value.data);
             });
         };
 
@@ -29,7 +26,9 @@ export const MovieDetail = () => {
         <main>
             <Link to="/">Go Back</Link>
             {movieObj && <MainInf movieObj={movieObj} />}
-            <Outlet context={[movieObj]}/>
+            {/* to tranfer object into outlet comtonent */}
+            {/* <Outlet context={[movieObj]} /> */}
+            <Outlet/>
         </main>        
     );
 };
