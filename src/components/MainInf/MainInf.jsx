@@ -1,4 +1,5 @@
 //React
+import PropType from 'prop-types';
 import { useState, useEffect } from 'react';
 //Style
 import { Link, SectionMainInfo, SectionAddInfo } from "./MainInf.styled";
@@ -7,7 +8,7 @@ import { tmdbImageAPI } from 'api/tmdbAPI';
 
 const WIDTH_IMG = 300;
 
-export const MainInf = ({ movieObj}) => {
+export const MainInf = ({ movieObj }) => {
     const { original_title, popularity, overview, genres, poster_path, release_date } = movieObj;
     const [imgLink, setImgLink] = useState();
     
@@ -55,4 +56,16 @@ export const MainInf = ({ movieObj}) => {
             </SectionAddInfo>
         </>
     );
+};
+MainInf.protoType = {
+    movieObj: PropType.shape({
+        original_title: PropType.string.isRequired,
+        popularity: PropType.number.isRequired,
+        overview : PropType.string.isRequired,
+        genres: PropType.shape({
+            name: PropType.string.isRequired
+        }),
+        poster_path: PropType.string.isRequired,
+        release_date: PropType.string.isRequired
+    })
 };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
+
 import { tmdbMovieIdAPI } from 'api/tmdbAPI';
 
 import { Link } from './MovieDetail.syled';

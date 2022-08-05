@@ -24,6 +24,7 @@ export const Cast = () => {
             });    
         }
     }, [movieId]);
+    console.log(typeof(castObj));
     return (
         <Section>
             {castObj && castObj.map((castItem) => {
