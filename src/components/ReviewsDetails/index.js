@@ -1,1 +1,0 @@
-export { ReviewsDetails } from './ReviewsDetails';

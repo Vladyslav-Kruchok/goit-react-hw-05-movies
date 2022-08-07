@@ -1,9 +1,13 @@
 //React
 import PropType from 'prop-types';
+import { useEffect } from 'react';
 //Component
-import { ListItem } from '../../components/ListItem';
+import ListItem from 'components/ListItem/ListItem.jsx';
 
-export const Home = ({arr}) => { 
+const Home = ({arr, setHistory}) => { 
+    useEffect(() => { 
+        setHistory("/");
+    }, [setHistory]);
     return (
         <main>
             <h1>Trending today</h1>
@@ -17,5 +21,8 @@ export const Home = ({arr}) => {
     );
 };
 Home.protoType = {
-    arr: PropType.array.isRequired
+    arr: PropType.array.isRequired,
+    setHistory: PropType.func.isRequired
 }
+
+export default Home;

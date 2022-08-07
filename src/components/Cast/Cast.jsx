@@ -2,15 +2,16 @@
 //import { useOutletContext } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
-//Component
-import { Section } from 'components/Section';
+//Component export default
+import Section from 'components/Section/Section.jsx';
+import CastDetails from 'components/CastDetails/CastDetails.jsx';
 //API
 import { tmdbMovieIdAPI } from 'api/tmdbAPI';
-import { CastDetails } from 'components/CastDetails';
 
 
 
-export const Cast = () => { 
+
+const Cast = () => { 
     //const [movieObj] = useOutletContext();
     const { movieId } = useParams();
     const [castObj, setCastObj] = useState(null);
@@ -24,7 +25,6 @@ export const Cast = () => {
             });    
         }
     }, [movieId]);
-    console.log(typeof(castObj));
     return (
         <Section>
             {castObj && castObj.map((castItem) => {
@@ -33,3 +33,5 @@ export const Cast = () => {
         </Section>
     );
 };
+
+export default Cast;

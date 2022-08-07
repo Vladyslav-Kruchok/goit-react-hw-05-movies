@@ -1,13 +1,10 @@
 //React
 import PropType from 'prop-types';
-//Style
-import { PtegReviewInfo } from "./ReviewsDetails.styled.js";
 
-export const ReviewsDetails = ({reviewItem: {author, content}}) => { 
-
+const ReviewsDetails = ({reviewItem: {author, content}}) => { 
     return (
         <li>
-            <PtegReviewInfo>{author}</PtegReviewInfo>
+            <h1>{author}</h1>
             <p>{content}</p>
         </li>
     );
@@ -19,3 +16,5 @@ ReviewsDetails.protoType = {
         content: PropType.string.isRequired
     })
 };
+
+export default ReviewsDetails;

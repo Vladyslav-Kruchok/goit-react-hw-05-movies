@@ -1,14 +1,14 @@
+//React
 import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-
-
+//API
 import { tmdbMovieIdAPI } from 'api/tmdbAPI';
-
+//Style
 import { Link } from './MovieDetail.syled';
+//Component export default
+import MainInf from 'components/MainInf/MainInf.jsx';
 
-import { MainInf } from 'components/MainInf';
-
-export const MovieDetail = () => {
+const MovieDetail = ({ history }) => {
     const { movieId } = useParams();
     const [movieObj, setMovieObj] = useState(null);
 
@@ -25,7 +25,7 @@ export const MovieDetail = () => {
 
     return (
         <main>
-            <Link to="/">Go Back</Link>
+            <Link to={history}>Go Back</Link>
             {movieObj && <MainInf movieObj={movieObj} />}
             {/* to tranfer object into outlet comtonent */}
             {/* <Outlet context={[movieObj]} /> */}
@@ -33,3 +33,5 @@ export const MovieDetail = () => {
         </main>        
     );
 };
+
+export default MovieDetail;

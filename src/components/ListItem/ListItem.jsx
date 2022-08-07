@@ -1,7 +1,7 @@
 import PropType from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export const ListItem = ({ film: { id, name, title } }) => { 
+const ListItem = ({ film: { id, name, title } }) => { 
 return (
     <>
         <li>
@@ -10,6 +10,7 @@ return (
     </>
     );
 };
+
 ListItem.prototype = {
     film: PropType.shape({
         id: PropType.number.isRequired,
@@ -17,3 +18,5 @@ ListItem.prototype = {
         title: PropType.string.isRequired
     })
 };
+
+export default ListItem;

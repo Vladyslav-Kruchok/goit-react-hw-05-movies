@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Form, FormButton, FormInput } from 'components/Searchbar/Searchbar.styled';
 import { Div } from 'components/Searchbar/Searchbar.styled';
 
-export const Searchbar = ({onSubmit}) => { //, onClick
+const Searchbar = ({onSubmit}) => { //, onClick
     const [searchStr, setSearchStr] = useState("");
     const exportData = (e) => { 
         e.preventDefault();
@@ -14,18 +14,12 @@ export const Searchbar = ({onSubmit}) => { //, onClick
             return;
         }
         onSubmit(searchStr);
-        resetCurrInput();
     }; 
     const updateCurrState = (e) => {
         const { value } = e.currentTarget;
         setSearchStr(value);
     };
-    // const onClickSearchbar = () => { 
-    //     onClick();
-    // };
-    function resetCurrInput(){
-        setSearchStr("");
-    };
+
     return (
         <Div>
             <Form onSubmit = {exportData}>
@@ -37,7 +31,6 @@ export const Searchbar = ({onSubmit}) => { //, onClick
                     name="searchStr"
                     value={searchStr}
                     onChange={updateCurrState}
-                    //onClick={onClickSearchbar}
                     autoComplete="off"
                     autoFocus
                     placeholder="Search movies"
@@ -50,3 +43,5 @@ Searchbar.protoType = {
     onSubmit: PropType.func.isRequired,
     onClick: PropType.func.isRequired
 };
+
+export default Searchbar;

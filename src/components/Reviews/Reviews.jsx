@@ -2,15 +2,18 @@
 //import { useOutletContext } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
+
 //Component
-import { Section } from "components/Section";
-import { ReviewsDetails } from 'components/ReviewsDetails';
+import Section from "components/Section/Section.jsx";
+import ReviewsDetails from 'components/ReviewsDetails/ReviewsDetails.jsx';
 //API
 import { tmdbMovieIdAPI } from 'api/tmdbAPI';
+//Dynamic
+//const ReviewsDetails = lazy(() => { import('../ReviewsDetails') });
 
 const REVIEW_NOT = 'We don`t have any reviews for this movie';
 
-export const Reviews = () => { 
+const Reviews = () => { 
     const { movieId } = useParams();
     const [reviewtObj, setReviewObj] = useState([]);
 
@@ -24,15 +27,13 @@ export const Reviews = () => {
         }
     }, [movieId]);
 
-
     return (
         <Section>
             <ul>
                 {
                     (reviewtObj.length !== 0)
                         ? reviewtObj.map((reviewItem) => {
-                    console.log(reviewItem);
-                    return <ReviewsDetails reviewItem={reviewItem} key={reviewItem.id} />
+                            return <ReviewsDetails reviewItem={reviewItem} key={reviewItem.id} />;
                         })
                         : REVIEW_NOT
                 }
@@ -40,3 +41,5 @@ export const Reviews = () => {
         </Section>
     );
 };
+
+export default Reviews;

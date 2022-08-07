@@ -1,15 +1,24 @@
 //React
 import { Outlet } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 //Style
 import { Container } from './Layout.styled';
-//Components
-import { AppBar } from '../../components/AppBar';
+//Components export default
+//import AppBar from 'components/AppBar/AppBar.jsx';
+import Snippet from 'components/Snippet/Snippet.jsx';
 
-export const Layout = () => { 
+//Dynamic import
+const AppBar = lazy(() => import('components/AppBar/AppBar.jsx' /* webpackChunkName: "AppBar" */));
+
+const Layout = () => { 
     return (
-        <Container>
-            <AppBar />
-            <Outlet/>
+        <Container>        
+            <Suspense fallback={<Snippet text={'Loading...'} />}>
+                <AppBar />
+            </Suspense>
+            <Outlet />
         </Container>
     );
 };
+
+export default Layout;

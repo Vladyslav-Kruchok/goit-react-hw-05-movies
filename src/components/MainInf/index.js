@@ -1,1 +1,0 @@
-export { MainInf } from './MainInf';

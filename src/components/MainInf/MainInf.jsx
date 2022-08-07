@@ -8,7 +8,7 @@ import { tmdbImageAPI } from 'api/tmdbAPI';
 
 const WIDTH_IMG = 300;
 
-export const MainInf = ({ movieObj }) => {
+const MainInf = ({ movieObj }) => {
     const { original_title, popularity, overview, genres, poster_path, release_date } = movieObj;
     const [imgLink, setImgLink] = useState();
     
@@ -17,8 +17,9 @@ export const MainInf = ({ movieObj }) => {
         return date || 'not found';
     };
     useEffect(() => {
-        tmdbImageAPI(poster_path, `w${WIDTH_IMG}`).then(fullPathImg => setImgLink(fullPathImg));
-    }, [imgLink, poster_path]);
+        const fullImgLink = tmdbImageAPI(poster_path, `w${WIDTH_IMG}`);
+        setImgLink(fullImgLink);
+    }, [poster_path]);
 
     return (
         <>
@@ -69,3 +70,5 @@ MainInf.protoType = {
         release_date: PropType.string.isRequired
     })
 };
+
+export default MainInf;

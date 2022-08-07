@@ -1,32 +1,48 @@
 //React
+import PropType from 'prop-types';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { Searchbar } from 'components/Searchbar';
-//Style
-import { ListItem } from '../../components/ListItem';
+//Components export default
+import Searchbar from 'components/Searchbar/Searchbar.jsx';
+import ListItem from 'components/ListItem/ListItem.jsx';
 
 //API
 import { tmdbMovieAPI } from 'api/tmdbAPI';
 
-export const Movies = () => {
-    const [searchVal, setSearchVal] = useState(() => "");
-    const [searchParams, setSearchParams] = useSearchParams(() => "");
+const Movies = ({setHistory}) => {
+    const [searchVal, setSearchVal] = useState(() => '');
     const [movArr, setMovArr] = useState(null);
+    
+    const [searchUrlQuery, setSearchUrlQuery] = useState(() => '');
+    const [searchParams, setSearchParams] = useSearchParams(() => '');
+    
+    const { pathname, search } = useLocation();
+
 
     useEffect(() => {
+        setSearchUrlQuery(searchParams.get('query'));
+        setSearchVal(searchVal || searchUrlQuery);
+
         if (!searchVal) return;
-        const searchByName = tmdbMovieAPI('search/movie', 1, searchVal);
+
+        const searchByName = tmdbMovieAPI('search/movie', 1, searchVal || searchUrlQuery);
         searchByName.then(value => {
             setMovArr(value.movData);
             setSearchParams({query: searchVal}, { replace: true });
         })
-    }, [searchVal, setSearchParams]);
+
+        console.log()
+    }, [searchVal, searchParams, setSearchParams, searchUrlQuery]);
+    
+    useEffect(() => {
+        searchParams && setHistory(pathname + search);
+    }, [searchParams, setHistory, pathname, search]);
 
     const getDataExtForm = (data) => { 
         setSearchVal(data);
     };
-    console.log(searchParams.get('query'));
+
     return (
         <main>
             <Searchbar onSubmit={getDataExtForm} /> 
@@ -40,3 +56,10 @@ export const Movies = () => {
         </main>
     );
 };
+
+Movies.protoType = {
+    arr: PropType.array.isRequired,
+    setHistory: PropType.func.isRequired
+}
+
+export default Movies;

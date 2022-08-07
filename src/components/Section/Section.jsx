@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const Section = ({ children }) => { 
+const Section = ({ children }) => { 
     return (
         <section>
             {children}
@@ -11,3 +11,5 @@ export const Section = ({ children }) => {
 Section.protoType = {
     children: PropTypes.node.isRequired
 };
+
+export default Section;
