@@ -1,6 +1,7 @@
 //React
 import { useState, useEffect, lazy, Suspense} from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 //API
 import { tmdbMovieAPI } from 'api/tmdbAPI';
@@ -45,6 +46,9 @@ export const App = () => {
           <Layout />
         </Suspense>
         }>
+        <Route path="goit-react-hw-05-movies" element={
+          <NavLink to={"/"}>Back Home</NavLink>
+        } />
         <Route index element={
           <Suspense fallback={<Snippet text={TEXT_DEFAULT} />}>
             <Home arr={movArr} setHistory={setHistory} />

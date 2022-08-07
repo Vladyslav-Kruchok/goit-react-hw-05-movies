@@ -5,7 +5,7 @@ import { lazy, Suspense } from 'react';
 import { Container } from './Layout.styled';
 //Components export default
 //import AppBar from 'components/AppBar/AppBar.jsx';
-import Snippet from 'components/Snippet/Snippet.jsx';
+
 
 //Dynamic import
 const AppBar = lazy(() => import('components/AppBar/AppBar.jsx' /* webpackChunkName: "AppBar" */));
@@ -13,7 +13,7 @@ const AppBar = lazy(() => import('components/AppBar/AppBar.jsx' /* webpackChunkN
 const Layout = () => { 
     return (
         <Container>        
-            <Suspense fallback={<Snippet text={'Loading...'} />}>
+            <Suspense>
                 <AppBar />
             </Suspense>
             <Outlet />
